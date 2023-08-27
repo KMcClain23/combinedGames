@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Some Fun Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./static/css/styles.css">
+    <link rel="stylesheet" href="./static/css/confetti.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- defer allows the script to be ran after the DOM Loads -->
+    <script src="./static/js/index.js" defer></script>
+    <script src="./static/js/dice.js" defer></script>
+    <script src="./static/js/country.js" defer></script>
+    <script src="/static/js/confetti.js"></script>
+    <!-- <script src="./static/js/gettingToKnowDocument.js" defer></script> -->
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid ">
+              <a class="navbar-brand" href="#">Play & Learn</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active"  name="home">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"  name="bubble">Bubbles</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"  name="grab">Grab a Beer</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"  name="find-brews">Find Brewery</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"  name="dice-game">Dice Game</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link"  name="country-search">Country Search</a>
+                  </li>
+                </ul>
+                <div id="color-buttons-container" class="ms-auto">
+                  <button class="light-dark-button btn btn-sm" value="Dark">Dark</button>
+                  <button class="light-dark-button btn btn-border btn-sm" value="Light">Light</button>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <main>
+        <div class="is-visible" id="home">
+            <div class="hero-image">
+                <div class="hero-text">
+                  <h1>Welcome to the Party!</h1>
+                </div>
+            </div>
+        </div>
+        <div class="is-invisible" id="grab">
+          <div class="h-300">
+            <img class="beerglass" style="position: absolute; left:50px; top: 200px;" src="./static/images/beer.png">
+            <img id="coaster" src="./static/images/coaster.png">
+          </div>
+
+          <div class="row m-0">
+            <div class="col-2 offset-1" >
+              <img class="beerglass" id="draggable" src="./static/images/beer.png">
+            </div>
+            <div class="col-2 offset-2" id="droppable">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="is-invisible row mt-5" id="find-brews">
+          <div class="col-4">  
+            <form id="find-brews-form">
+                <input class="form-control m-3" name="city" placeholder="City">
+                <button id="find-brews-input" type="submit" class="form-control btn btn-primary m-3">Find Breweries</button> 
+            </form>
+          </div>
+          <div class="col-6">
+            <table id="brewery-table">
+            </table>
+          </div>
+        </div>
+        <div class="is-invisible" id="bubble">
+          <div class="bubble" id="outerBubble">
+            <div class="bubble" id="middleBubble">
+              <div class="bubble" id="innerBubble">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="is-invisible" id = 'dice-game'>
+
+          <h1 class = "title-head pt-5">It's the Dice Game!</h1>
+          <p class="instructions">
+            * Player rolls 6 six-sided Dice until they reach 10,000 points <br>
+            * Player wins when they reach 10,000 points<br>
+            ** Dice rolls are scored as following:<br>
+              Single 5's - 50 points ea<br>
+              Single 1's - 100 points ea<br>
+              3 of a Kind 1's - 1000 points<br>
+              3 of a Kind 2-5 - Face value * 100 (4,4,4 is 400)<br>
+              Straight (1,2,3,4,5,6) is worth 1500 points!<br>
+          </p>
+          <div class="container">       
+            <div id="dice-container">
+                <div id="dice">
+                </div>
+            </div>
+            <button id="roll-button">Roll Dice</button>
+            <div id="scoreboard">
+                <h2>Scoreboard</h2>
+                <div class="score-columns">
+                    <div class="roll-column">
+                        <h3>Rolls</h3>
+                        <p id="roll-result"></p>
+                    </div>
+                    <div class="score-column">
+                        <h3>Scores</h3>
+                        <p id="score-result"></p>
+                    </div>
+                </div>
+                <p>Total Score: <span id="total-score">0</span></p>
+                <p id="win-message"></p>
+            </div>
+            <button id="restart-button">Restart Game</button>
+          </div>
+        </div>
+        <div class="is-invisible" id="country-search">  
+          <h1 class = "title-head">Country Search!</h1> 
+          <div class="d-flex justify-content-center" id="find-countries">
+            <div class="row">
+            <form id="find-countries-form">
+              <div>
+                  <input class="form-control m-3" name="country" placeholder="Type in a Country to Learn">
+                  <button id="find-countries-input" type="submit" class="form-control btn btn-primary m-3">Let's Learn</button>
+              </div>    
+            </form>
+            <div>
+              <table id="country-table">
+              </table>
+            </div>
+            </div>
+          </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

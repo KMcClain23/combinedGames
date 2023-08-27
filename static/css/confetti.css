@@ -1,0 +1,19 @@
+/* Style for a single confetti piece */
+.confetti {
+    position: fixed;
+    background-color: #ff0000; /* red color */
+    width: 15px;
+    height: 15px;
+    border-radius: 25%;
+    animation: confetti-fall 4s ease-out 3;
+}
+
+/* Animation for the confetti falling */
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
